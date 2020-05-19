@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import Hello from './Hello';
 import './style.css';
@@ -14,28 +14,33 @@ Given a list of starting ratings, create a compnetnet that allows a user to rate
 
 //First start with a displaying the current movie
 function App() {
-  console.log(data.movies)
 
   const [currIndex, updateIndex] = useState(0)
   const [currMovie, updateMovie] = useState(data.movies[0])
 
   function setIndex (idx) {
-    //console.log(idx)
-    // if(idx < 0) {
-    //   console.log("hey")
-    //   updateIndex(data.movies.length - 1)
-    //   console.log(data.movies.length - 1)
-    // //   updateMovie(currIndex)
-    // }
+    if(idx < 0) {
+      updateIndex(data.movies.length - 1)
+    }
+    else if (idx >= data.movies.length){
+      updateIndex(0)
+    }
+    else {
+      updateIndex(idx)
+    }
   }
+
+  useEffect(() => {
+      updateMovie(data.movies[currIndex])
+  }, [currIndex])
     return (
       <div>
-      <button onClick={setIndex(currIndex - 1)}>Decrement</button>
-        <div class="center">
+        <button onClick={() => setIndex(currIndex - 1)}> {'<'} </button>
+        <div className="center">
           <img className="movie-thumbnail" src={currMovie.image}/>
           <h2>{currMovie.title}</h2>
         </div>
-        <button onClick={setIndex(currIndex + 1)}>Increment</button>
+        <button onClick={() => setIndex(currIndex + 1)}>></button>
       </div>
     );
   }
