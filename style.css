@@ -1,3 +1,10 @@
 h1, p {
   font-family: Lato;
 }
+
+.movie-thumbnail {
+  max-width: 200px
+}
+.center {
+  text-align: center;
+}
