@@ -18,11 +18,11 @@ function App() {
   const [currIndex, updateIndex] = useState(0)
   const [currMovie, updateMovie] = useState(data.movies[0])
 
-  function setIndex (idx) {
-    if(idx < 0) {
+  function setIndex(idx) {
+    if (idx < 0) {
       updateIndex(data.movies.length - 1)
     }
-    else if (idx >= data.movies.length){
+    else if (idx >= data.movies.length) {
       updateIndex(0)
     }
     else {
@@ -31,18 +31,20 @@ function App() {
   }
 
   useEffect(() => {
-      updateMovie(data.movies[currIndex])
+    updateMovie(data.movies[currIndex])
   }, [currIndex])
-    return (
-      <div>
+  return (
+    <div>
+      <div class="row">
         <button onClick={() => setIndex(currIndex - 1)}> {'<'} </button>
-        <div className="center">
-          <img className="movie-thumbnail" src={currMovie.image}/>
+        <div className="center column">
+          <img className="movie-thumbnail" src={currMovie.image} />
           <h2>{currMovie.title}</h2>
         </div>
         <button onClick={() => setIndex(currIndex + 1)}>></button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 render(<App />, document.getElementById('root'));

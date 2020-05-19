@@ -8,3 +8,8 @@ h1, p {
 .center {
   text-align: center;
 }
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
