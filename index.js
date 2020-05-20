@@ -8,7 +8,7 @@ import data from './data.json'
 
 /*
 
-Given a list of starting ratings, create a compnetnet that allows a user to rate and update the average
+Given a list of starting ratings, create a component that allows a user to rate and update the average
 
 */
 
