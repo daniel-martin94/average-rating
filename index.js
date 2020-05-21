@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import Hello from './Hello';
+import Ratings from './components/AverageRating'
 import './style.css';
 
 import data from './data.json'
@@ -33,6 +34,7 @@ function App() {
   useEffect(() => {
     updateMovie(data.movies[currIndex])
   }, [currIndex])
+
   return (
     <div>
       <div class="row">
@@ -43,6 +45,7 @@ function App() {
         </div>
         <button onClick={() => setIndex(currIndex + 1)}>></button>
       </div>
+      <Ratings ratings={currMovie.ratings}></Ratings>
     </div>
   );
 }
